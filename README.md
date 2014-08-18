@@ -2,7 +2,7 @@
 This project is a small encryption application that encrypts and decrypts files using the 256-bit AES block cipher for encryption, PBKDF2 for key stretching and derivation, and HMAC-SHA512 (over the ciphertext, KDF salt, and initialization vector) for file integrity and authenticity checking.
 
 # To compile:
-    $ gcc encrypt\_decrypt.c -o encrypt\_decrypt -lgcrypt
+    $ gcc encrypt_decrypt.c -o encrypt_decrypt -lgcrypt
 
 # Usage:
     $ ./encrypt_decrypt [encrypt|decrypt] <input file path> <output file path> <some-super-strong-password>
