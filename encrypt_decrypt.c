@@ -44,6 +44,9 @@ size_t read_file_into_buf (char *filepath, unsigned char **data) {
   }
 
   bytes_read = fread(*data, 1, file_size, f);
+  if (bytes_read == 0) {
+    free(*data);
+  }
 
   fclose(f);
 
