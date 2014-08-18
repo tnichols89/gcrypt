@@ -1,24 +1,3 @@
-/*
- * Author: Tyler Nichols
- * Last updated: Tuesday, August 12, 2014
- * Description: This application can encrypt and decrypt
- *   files using 256-bit AES, PBKDF2 for
- *   key stretching and derivation, and HMAC-SHA512 to
- *   ensure the integrity and authenticity of the ciphertext,
- *   KDF salt, and initialization vector.
- *
- * To compile:
- *   gcc encrypt_decrypt.c -o encrypt_decrypt -lgcrypt
- *
- * Usage:
- *   ./encrypt_decrypt [encrypt|decrypt] <input file path> <output file path> some-super-strong-password
- *
- * Pitfalls:
- *   Inefficient use of memory. All data to be encrypted/decrypted
- *   is loaded into memory prior to processing instead of reading
- *   and processing a file chunk-by-chunk.
- */
-
 // TODO
 // 1) Split into multiple files
 //   + utils.c/utils.h with a Makefile
