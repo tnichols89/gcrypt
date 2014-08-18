@@ -1,13 +1,3 @@
-// TODO
-// 1) Split into multiple files
-//   + utils.c/utils.h with a Makefile
-// 2) getopt instead of strncmp
-// 3) Possibly refactor gcrypt error handling since it's repeated a lot
-// 4) Possibly optimize file encryption/decryption
-//   + Make a module that uses PKCS#7 for padding and avoids CTS
-//   + Make a module that uses GCM operating mode for production realism
-//   + Encrypt/decrypt files one chunk at a time in current module
-
 #include <stdio.h>
 #include <stdlib.h>   // size_t
 #include <gcrypt.h>
