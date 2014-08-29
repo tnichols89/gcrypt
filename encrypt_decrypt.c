@@ -37,7 +37,7 @@ size_t read_file_into_buf (char *filepath, unsigned char **data) {
   fseek(f, 0, SEEK_SET);
   
   *data = malloc(file_size + 1);
-  if (data == NULL) {
+  if (*data == NULL) {
     fprintf(stderr, "Error: file is too large to fit in memory\n");
     fclose(f);
     return 0;
@@ -182,6 +182,11 @@ int encrypt_file (char *infile, char *outfile, char *password) {
   hmac_len = gcry_mac_get_algo_maclen(GCRY_MAC_HMAC_SHA512);
   packed_data_len = KDF_SALT_SIZE + AES256_BLOCK_SIZE + (AES256_BLOCK_SIZE * blocks_required) + hmac_len;
   packed_data = malloc(packed_data_len);
+  if (packed_data == NULL) {
+    fprintf(stderr, "Unable to allocate memory for packed data\n");
+    cleanup(handle, NULL, ciphertext, NULL, NULL);
+    return 1;
+  }
 
   // Pack data before writing: salt::IV::ciphertext::HMAC where "::" denotes concatenation
   memcpy(packed_data, kdf_salt, KDF_SALT_SIZE);
